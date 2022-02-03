@@ -1,0 +1,83 @@
+<%-include("partials/header.ejs")%>
+    <div class="container form-cadastro">
+        
+        <form method="POST" action="/cliente/cadastrar">
+            <h3 class="text-muted mt-3">Cadastro de Cliente</h3>
+            <div class="row g-2 mt-4">
+                <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+            </div>
+            <div class="row g-2 mt-3">
+                <div class="col-md-6">
+                    <label for="ie" class="form-label">IE</label>
+                    <input type="text" class="form-control" id="ie" name="ie">
+                </div>
+                <div class="col-md-6">
+                    <label for="cnpj" class="form-label">CNPJ</label>
+                    <input type="text" class="form-control" id="cnpj" name="cnpj">
+                </div>
+            </div>
+            <div class="row g-2 mt-3">
+                <div class="col-md-8">
+                    <label for="rua" class="form-label">End.</label>
+                    <input type="text" class="form-control" id="rua" name="rua">
+                </div>
+                <div class="col-md-4">
+                    <label for="num" class="form-label">Num.</label>
+                    <input type="text" class="form-control" id="num" name="numero">
+                </div>
+            </div>
+            <div class="row g2 mt-3">
+                <div class="col-md-4">
+                    <label for="bairro" class="form-label">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro">
+                </div>
+                <div class="col-md-4">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="uf">UF</label>
+                    <select id="uf" class="form-select" name="uf">
+                        <option disabled selected>Selecione UF</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-5">Cadastar</button>
+        </form>
+    </div>
+<%-include("partials/footer.ejs")%>
