@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Cliente.belongsTo(models.Fechamento,{
+        foreignKey: "id"
+      })
     }
   }
   Cliente.init({
@@ -18,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     ie: DataTypes.STRING,
     cnpj: DataTypes.STRING,
+    cep: DataTypes.CHAR(10),
     rua: DataTypes.STRING,
     numero: DataTypes.INTEGER,
     bairro: DataTypes.STRING,

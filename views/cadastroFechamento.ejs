@@ -1,0 +1,112 @@
+<%-include('partials/header.ejs')%>
+    <div class="container form-cadastro">
+        <form method="POST" action="/fechamentos/cadastro">
+            <h3 class="text-muted mt-3">Cadastro de Fechamento</h3>
+            <div class="row col-md-5 mt-3">
+                <div class="form-group">
+                    <label for="pc" class="form-label">PC:</label>
+                    <input type="text" id="pc" class="form-control" name="pc">
+                </div>
+            </div>
+            <div class="row col-md-10 mt-3">
+                <div class="form-group">
+                    <label for="vendedor" class="form-label">Vendedor</label>
+                    <select id="vendedor" class="form-control" name="vendedor">
+                        <option disabled selected>--Selecione--</option>
+                        <option value="1"><1></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-md-10 mt-3">
+                <div class="form-group">
+                    <label for="comprador" class="form-label">Comprador</label>
+                    <select id="comprador" class="form-control" name="comprador">
+                        <option disabled selected>--Selecione--</option>
+                        <option value="1"><1></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-md-10 mt-3">
+                <div class="form-group">
+                    <label for="retirada" class="form-label">Local de Retirada</label>
+                    <select id="retirada" class="form-control" name="retirada">
+                        <option disabled selected>--Selecione--</option>
+                        <option value="1"><1></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-md-10 mt-3">
+                <div class="form-group">
+                    <label for="descarga" class="form-label">Local de Descarga</label>
+                    <select id="descarga" class="form-control" name="descarga">
+                        <option disabled selected>--Selecione--</option>
+                        <option value="1"><1></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mt-3">
+                    <label for="cd" class="form-label">Condição de Venda</label>
+                    <input type="text" id="cd" class="form-control" name="condicaoVenda">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 mt-3">
+                    <label for="preco" class="form-label">Preço</label>
+                    <input type="text" id="preco "class="form-control" name="preco">
+                </div>
+                <div class="col-md-5 mt-3">
+                    <label for="quantidade" class="form-label">Quantidade</label>
+                    <input type="text" id="quantidade "class="form-control" name="quantidade">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mt-3">
+                    <label for="cd" class="form-label">Modalidade</label>
+                    <input type="text" id="cd" class="form-control" name="condicaoVenda">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mt-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <input type="text" id="descricao" class="form-control" name="descricao">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mt-3">
+                    <label for="pagamento" class="form-label">Dados para Pagamento</label>
+                    <input type="text" id="pagamento" class="form-control" name="pagamento">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-5 mt-3">
+                        <label for="corretor" class="form-label">Corretor</label>
+                        <input type="text" id="corretor" class="form-control" name="corretor">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mt-3">
+                        <label for="corretagemV" class="form-label">Corretagem Vendedor</label>
+                        <input type="number" step="any" id="corretagemV" class="form-control" name="corretagemVendedor">
+                    </div>
+                    <div class="col-md-5 mt-3">
+                        <label for="corretagemC" class="form-label">Corretagem Comprador</label>
+                        <input type="number" step="any" id="corretagemC" class="form-control" name="corretagemComprador">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mt-3">
+                    <label for="obs" class="form-label">Observação</label>
+                    <textArea id="obs" class="form-control" name="obs"></textArea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 mt-3">
+                    <button type="submit" class=" btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+<%-include('partials/footer.ejs')%>

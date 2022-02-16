@@ -10,7 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Fechamento.hasMany(models.Cliente,{
+        foreignKey:"comprador",
+        as: "comprador"
+      }),
+      Fechamento.hasMany(models.Cliente,{
+        foreignKey: "vendedor",
+        as: "vendedor"
+      }),
+      Fechamento.hasMany(models.Armazem,{
+        foreignKey: "retirada",
+        as: "retirada"
+      }),
+      Fechamento.hasMany(models.Armazem,{
+        foreignKey: "retirada",
+        as: "descarga"
+      })
     }
   }
   Fechamento.init({

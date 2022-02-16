@@ -28,9 +28,9 @@ app.use(session({
 }))
 
 app.use('/', indexRouter);
-app.use("/cliente", clienteRouter);
-app.use("/armazem", armazemRouter);
-app.use("/fechamento", fechamentoRouter);
+app.use("/clientes", clienteRouter);
+app.use("/armazens", armazemRouter);
+app.use("/fechamentos", fechamentoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

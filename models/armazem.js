@@ -10,13 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Armazem.belongsTo(models.Fechamento,{
+        foreignKey: "id"
+      })
     }
   }
   Armazem.init({
     nome: DataTypes.STRING,
     cnpj: DataTypes.STRING,
     ie: DataTypes.STRING,
+    cep: DataTypes.CHAR(10),
     rua: DataTypes.STRING,
     numero: DataTypes.INTEGER,
     bairro: DataTypes.STRING,

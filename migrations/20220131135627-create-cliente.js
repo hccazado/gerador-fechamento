@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       nome: {
         type: Sequelize.STRING
@@ -18,6 +18,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       cnpj: {
+        type: Sequelize.STRING
+      },
+      cep: {
         type: Sequelize.STRING
       },
       rua: {

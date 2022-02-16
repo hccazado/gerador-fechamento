@@ -6,25 +6,49 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       nroFechamento: {
         type: Sequelize.STRING
       },
       comprador: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model:{
+            tableName: "Clientes"
+          },
+          key: "id",
+        }
       },
       vendedor: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model:{
+            tableName: "Clientes"
+          },
+          key: "id",
+        }
       },
       pc: {
         type: Sequelize.STRING
       },
       retirada: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model:{
+            tableName: "Armazems"
+          },
+          key: "id",
+        }
       },
       descarga: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model:{
+            tableName: "Armazems"
+          },
+          key: "id",
+        }
       },
       condicaoVenda: {
         type: Sequelize.STRING

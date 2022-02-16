@@ -1,13 +1,15 @@
 <%-include("partials/header.ejs")%>
 <div class="container form-cadastro">
-    <form method="POST" action="/armazem/cadastro">
+    <form method="POST" action="/armazens/cadastro">
         <h3 class="text-muted mt-3">Cadastro Armazém</h3>
         <div class="row g-2 mt-4">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome">
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
             </div>
@@ -22,26 +24,15 @@
                 <input type="text" class="form-control" id="cnpj" name="cnpj">
             </div>
         </div>
-        <div class="row g-2 mt-3">
-            <div class="col-md-8">
-                <label for="rua" class="form-label">End.</label>
-                <input type="text" class="form-control" id="rua" name="rua">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="cep" class="form-label">CEP</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="cep" name="cep">
+                    <button class="btn btn-outline-secondary" type="button" id="getCEP">Buscar</button>
+                </div>
             </div>
-            <div class="col-md-4">
-                <label for="num" class="form-label">Num.</label>
-                <input type="text" class="form-control" id="num" name="numero">
-            </div>
-        </div>
-        <div class="row g2 mt-3">
-            <div class="col-md-4">
-                <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairro" name="bairro">
-            </div>
-            <div class="col-md-4">
-                <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidade" name="cidade">
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label class="form-label" for="uf">UF</label>
                 <select id="uf" class="form-select" name="uf">
                     <option disabled selected>Selecione UF</option>
@@ -76,7 +67,27 @@
                 </select>
             </div>
         </div>
-        <button class="btn btn-primary mt-5">Cadastar</button>
+        <div class="row g-2 mt-3">
+            <div class="col-md-8">
+                <label for="rua" class="form-label">End.</label>
+                <input type="text" class="form-control" id="rua" name="rua">
+            </div>
+            <div class="col-md-4">
+                <label for="num" class="form-label">Num.</label>
+                <input type="text" class="form-control" id="num" name="numero">
+            </div>
+        </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md-6">
+                <label for="bairro" class="form-label">Bairro</label>
+                <input type="text" class="form-control" id="bairro" name="bairro">
+            </div>
+            <div class="col-md-6">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="cidade">
+            </div>        
+        </div>
+        <button class="btn btn-primary mt-5 mb-5">Cadastar</button>
     </form>
 </div>
 <%-include("partials/footer.ejs")%>
