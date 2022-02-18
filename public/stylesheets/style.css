@@ -15,3 +15,27 @@
 .titulo_fechamento{
   font-size: 18px;
 }
+
+.table-responsive{
+  height: 500px;
+  overflow: scroll;   
+}
+
+.table-responsive thead{
+  height: 60px;
+  font-weight: 600;
+}
+
+.table-responsive tr,td{
+  vertical-align: middle;
+}
+
+.table-responsive tr,td a{
+  color: #000;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.table-responsive tbody td a:hover{
+  color: darkred;
+}
