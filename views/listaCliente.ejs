@@ -18,9 +18,13 @@
                 </tr>
             </thead>
             <tbody>
+                <% for(cliente of clientes){%>
                 <tr>
-                    <td></td>
+                    <td><%=cliente.id%></td>
+                    <td><%=cliente.nome%></td>
+                    <td><%=cliente.cidade%></td>
                 </tr>
+                <%}%>
             </tbody>
         </table>
     </div>

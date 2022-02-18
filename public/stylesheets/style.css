@@ -5,3 +5,13 @@
 .form-cadastro{
   max-width: 600px !important;
 }
+
+.nunito_font400{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.titulo_fechamento{
+  font-size: 18px;
+}

@@ -12,13 +12,23 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th></th>
+                <th>Fechamento</th>
+                <th>PC</th>
+                <th>Comprador</th>
+                <th>Vendedor</th>
+                <th>Sacas</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td></td>
-            </tr>
+                <%for(fechamento of fechamentos){%>
+                    <tr>
+                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.nroFechamento%></a></td>
+                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.pc%></a></td>
+                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.comprador%></a></td>
+                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.vendedor%></a></td>
+                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.quantidade%></a></td>
+                    </tr>
+                <%}%>
             </tbody>
         </table>
     </div>

@@ -13,7 +13,9 @@
                     <label for="vendedor" class="form-label">Vendedor</label>
                     <select id="vendedor" class="form-control" name="vendedor">
                         <option disabled selected>--Selecione--</option>
-                        <option value="1"><1></option>
+                        <% for(cliente of clientes){%>
+                            <option value="<%=cliente.id%>"><%=cliente.nome%></option>
+                        <%}%>
                     </select>
                 </div>
             </div>
@@ -22,7 +24,9 @@
                     <label for="comprador" class="form-label">Comprador</label>
                     <select id="comprador" class="form-control" name="comprador">
                         <option disabled selected>--Selecione--</option>
-                        <option value="1"><1></option>
+                        <% for(cliente of clientes){%>
+                            <option value="<%=cliente.id%>"><%=cliente.nome%></option>
+                        <%}%>
                     </select>
                 </div>
             </div>
@@ -31,7 +35,9 @@
                     <label for="retirada" class="form-label">Local de Retirada</label>
                     <select id="retirada" class="form-control" name="retirada">
                         <option disabled selected>--Selecione--</option>
-                        <option value="1"><1></option>
+                        <% for(armazem of armazens){%>
+                            <option value="<%=armazem.id%>"><%=armazem.nome%></option>
+                        <%}%>
                     </select>
                 </div>
             </div>
@@ -40,7 +46,9 @@
                     <label for="descarga" class="form-label">Local de Descarga</label>
                     <select id="descarga" class="form-control" name="descarga">
                         <option disabled selected>--Selecione--</option>
-                        <option value="1"><1></option>
+                        <% for(armazem of armazens){%>
+                            <option value="<%=armazem.id%>"><%=armazem.nome%></option>
+                        <%}%>
                     </select>
                 </div>
             </div>
@@ -63,7 +71,7 @@
             <div class="row">
                 <div class="col-md-10 mt-3">
                     <label for="cd" class="form-label">Modalidade</label>
-                    <input type="text" id="cd" class="form-control" name="condicaoVenda">
+                    <input type="text" id="cd" class="form-control" name="modalidade">
                 </div>
             </div>
             <div class="row">
@@ -103,8 +111,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-5 mt-3">
-                    <button type="submit" class=" btn-success">Cadastrar</button>
+                <div class="col-md-5 mt-3 mb-5">
+                    <button type="submit" role ="button" class="btn btn-success">Cadastrar</button>
                 </div>
             </div>
         </form>

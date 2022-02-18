@@ -18,9 +18,13 @@
                 </tr>
             </thead>
             <tbody>
+                <%for(armazem of armazens){%>
                 <tr>
-                    <td></td>
+                    <td><%=armazem.id%></td>
+                    <td><%=armazem.nome%></td>
+                    <td><%=armazem.cidade%></td>
                 </tr>
+                <%}%>
             </tbody>
         </table>
     </div>

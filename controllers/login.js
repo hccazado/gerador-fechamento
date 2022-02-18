@@ -41,9 +41,7 @@ const controller = {
         }
         catch(err){
             console.log(err);
-        }
-        
-        
+        }    
     }
 
 }

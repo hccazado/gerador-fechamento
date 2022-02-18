@@ -9,14 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      Armazem.belongsTo(models.Fechamento,{
-        foreignKey: "id"
-      })
-    }
   }
   Armazem.init({
     nome: DataTypes.STRING,
+    email: DataTypes.STRING,
     cnpj: DataTypes.STRING,
     ie: DataTypes.STRING,
     cep: DataTypes.CHAR(10),

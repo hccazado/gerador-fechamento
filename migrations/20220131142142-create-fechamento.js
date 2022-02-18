@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Fechamentos', {
@@ -11,7 +14,10 @@ module.exports = {
       nroFechamento: {
         type: Sequelize.STRING
       },
-      comprador: {
+      data: {
+        type: Sequelize.DATEONLY
+      },
+      ID_comprador: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model:{
@@ -20,7 +26,7 @@ module.exports = {
           key: "id",
         }
       },
-      vendedor: {
+      ID_vendedor: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model:{
@@ -32,7 +38,7 @@ module.exports = {
       pc: {
         type: Sequelize.STRING
       },
-      retirada: {
+      ID_retirada: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model:{
@@ -41,7 +47,7 @@ module.exports = {
           key: "id",
         }
       },
-      descarga: {
+      ID_descarga: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model:{
