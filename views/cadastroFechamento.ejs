@@ -1,11 +1,19 @@
 <%-include('partials/header.ejs')%>
     <div class="container form-cadastro">
-        <form method="POST" action="/fechamentos/cadastro">
+        <%if(isEditing){%>
+            <form method="POST" action="/fechamentos/editar/<%=old.id%>">
+        <%} else{ %>
+            <form method="POST" action="/fechamentos/cadastro">
+        <% }%>
             <h3 class="text-muted mt-3">Cadastro de Fechamento</h3>
             <div class="row col-md-5 mt-3">
                 <div class="form-group">
                     <label for="pc" class="form-label">PC:</label>
-                    <input type="text" id="pc" class="form-control" name="pc">
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="pc" value="<%=old.pc%>">
+                    <%} else{ %>
+                        <input type="text" id="pc" class="form-control" name="pc">
+                    <% }%>    
                 </div>
             </div>
             <div class="row col-md-10 mt-3">
@@ -13,9 +21,19 @@
                     <label for="vendedor" class="form-label">Vendedor</label>
                     <select id="vendedor" class="form-control" name="vendedor">
                         <option disabled selected>--Selecione--</option>
-                        <% for(cliente of clientes){%>
-                            <option value="<%=cliente.id%>"><%=cliente.nome%></option>
-                        <%}%>
+                        <%if(isEditing){%>
+                            <% for(cliente of clientes){%>
+                                <%if(cliente.id == old.ID_vendedor){%>
+                                    <option value="<%=cliente.id%>" selected><%=cliente.nome%></option>
+                                <%} else{%>
+                                    <option value="<%=cliente.id%>"><%=cliente.nome%></option>
+                                <%}%> 
+                            <%}%>
+                        <%} else{ %>
+                            <% for(cliente of clientes){%>
+                                <option value="<%=cliente.id%>"><%=cliente.nome%></option>
+                            <%}%>
+                        <% }%>
                     </select>
                 </div>
             </div>
@@ -24,9 +42,19 @@
                     <label for="comprador" class="form-label">Comprador</label>
                     <select id="comprador" class="form-control" name="comprador">
                         <option disabled selected>--Selecione--</option>
-                        <% for(cliente of clientes){%>
-                            <option value="<%=cliente.id%>"><%=cliente.nome%></option>
-                        <%}%>
+                        <%if(isEditing){%>
+                            <% for(cliente of clientes){%>
+                                <%if(cliente.id == old.ID_comprador){%>
+                                    <option value="<%=cliente.id%>" selected><%=cliente.nome%></option>
+                                <%} else{%>
+                                    <option value="<%=cliente.id%>"><%=cliente.nome%></option>
+                                <%}%> 
+                            <%}%>
+                        <%} else{ %>
+                            <% for(cliente of clientes){%>
+                                <option value="<%=cliente.id%>"><%=cliente.nome%></option>
+                            <%}%>
+                        <% }%>
                     </select>
                 </div>
             </div>
@@ -35,9 +63,19 @@
                     <label for="retirada" class="form-label">Local de Retirada</label>
                     <select id="retirada" class="form-control" name="retirada">
                         <option disabled selected>--Selecione--</option>
-                        <% for(armazem of armazens){%>
-                            <option value="<%=armazem.id%>"><%=armazem.nome%></option>
-                        <%}%>
+                        <%if(isEditing){%>
+                            <% for(armazem of armazens){%>
+                                <%if(armazem.id == old.ID_retirada){%>
+                                    <option value="<%=armazem.id%>" selected><%=armazem.nome%></option>
+                                <%} else{%>
+                                    <option value="<%=armazem.id%>"><%=armazem.nome%></option>
+                                <%}%> 
+                            <%}%>
+                        <%} else{ %>
+                            <% for(armazem of armazens){%>
+                                <option value="<%=armazem.id%>"><%=armazem.nome%></option>
+                            <%}%>
+                        <% }%>
                     </select>
                 </div>
             </div>
@@ -46,68 +84,118 @@
                     <label for="descarga" class="form-label">Local de Descarga</label>
                     <select id="descarga" class="form-control" name="descarga">
                         <option disabled selected>--Selecione--</option>
-                        <% for(armazem of armazens){%>
-                            <option value="<%=armazem.id%>"><%=armazem.nome%></option>
-                        <%}%>
+                        <%if(isEditing){%>
+                            <% for(armazem of armazens){%>
+                                <%if(armazem.id == old.ID_descarga){%>
+                                    <option value="<%=armazem.id%>" selected><%=armazem.nome%></option>
+                                <%} else{%>
+                                    <option value="<%=armazem.id%>"><%=armazem.nome%></option>
+                                <%}%> 
+                            <%}%>
+                        <%} else{ %>
+                            <% for(armazem of armazens){%>
+                                <option value="<%=armazem.id%>"><%=armazem.nome%></option>
+                            <%}%>
+                        <% }%>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
-                    <label for="cd" class="form-label">Condição de Venda</label>
-                    <input type="text" id="cd" class="form-control" name="condicaoVenda">
+                    <label for="cd" class="form-label">Condição de Venda</label> 
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="condicaoVenda" value="<%=old.condicaoVenda%>">
+                    <%} else{ %>
+                        <input type="text" id="cd" class="form-control" name="condicaoVenda">
+                    <% }%>   
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5 mt-3">
                     <label for="preco" class="form-label">Preço</label>
-                    <input type="text" id="preco "class="form-control" name="preco">
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="preco" value="<%=old.preco%>">
+                    <%} else{ %>
+                        <input type="text" id="preco "class="form-control" name="preco">
+                    <% }%> 
                 </div>
                 <div class="col-md-5 mt-3">
                     <label for="quantidade" class="form-label">Quantidade</label>
-                    <input type="text" id="quantidade "class="form-control" name="quantidade">
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="quantidade" value="<%=old.quantidade%>">
+                    <%} else{ %>
+                        <input type="text" id="quantidade "class="form-control" name="quantidade">
+                    <% }%> 
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
                     <label for="cd" class="form-label">Modalidade</label>
-                    <input type="text" id="cd" class="form-control" name="modalidade" value="pagamento e retirada até ">
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="modalidade" value="<%=old.modalidade%>">
+                    <%} else{ %>
+                        <input type="text" id="cd" class="form-control" name="modalidade" value="pagamento e retirada até ">
+                    <% }%>   
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
                     <label for="descricao" class="form-label">Descrição</label>
-                    <input type="text" id="descricao" class="form-control" name="descricao" value="Conforme amostra em poder das partes">
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="descricao" value="<%=old.descricao%>">
+                    <%} else{ %>
+                        <input type="text" id="descricao" class="form-control" name="descricao" value="Conforme amostra em poder das partes">
+                    <% }%>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
-                    <label for="pagamento" class="form-label">Dados para Pagamento</label>
-                    <input type="text" id="pagamento" class="form-control" name="pagamento">
+                    <label for="pagamento" class="form-label">Dados para Pagamento</label> 
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="pagamento" value="<%=old.pagamento%>">
+                    <%} else{ %>
+                        <input type="text" id="pagamento" class="form-control" name="pagamento">
+                    <% }%>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-5 mt-3">
-                        <label for="corretor" class="form-label">Corretor</label>
-                        <input type="text" id="corretor" class="form-control" name="corretor" value="NETTUZZI CORRETORA">
+                        <label for="corretor" class="form-label">Corretor</label>    
+                        <%if(isEditing){%>
+                            <input type="text" id="pc" class="form-control" name="corretor" value="<%=old.corretor%>">
+                        <%} else{ %>
+                            <input type="text" id="corretor" class="form-control" name="corretor" value="NETTUZZI CORRETORA">
+                        <% }%>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-5 mt-3">
                         <label for="corretagemV" class="form-label">Corretagem Vendedor</label>
-                        <input type="number" step="any" id="corretagemV" class="form-control" name="corretagemVendedor" value="0.0">
+                        <%if(isEditing){%>
+                            <input type="text" id="pc" class="form-control" name="corretagemVendedor" value="<%=old.corretagemVendedor%>">
+                        <%} else{ %>
+                            <input type="number" step="any" id="corretagemV" class="form-control" name="corretagemVendedor" value="0.0">
+                        <% }%>
                     </div>
                     <div class="col-md-5 mt-3">
                         <label for="corretagemC" class="form-label">Corretagem Comprador</label>
-                        <input type="number" step="any" id="corretagemC" class="form-control" name="corretagemComprador" value="0.5">
+                        <%if(isEditing){%>
+                            <input type="text" id="pc" class="form-control" name="corretagemComprador" value="<%=old.corretagemComprador%>">
+                        <%} else{ %>
+                            <input type="number" step="any" id="corretagemC" class="form-control" name="corretagemComprador" value="0.5">
+                        <% }%>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
                     <label for="obs" class="form-label">Observação</label>
-                    <textArea id="obs" class="form-control" name="obs"></textArea>
+                    <%if(isEditing){%>
+                        <textArea id="obs" class="form-control" name="obs"><%=old.obs%></textArea>
+                    <%} else{ %>
+                        <textArea id="obs" class="form-control" name="obs"></textArea>
+                    <% }%>
                 </div>
             </div>
             <div class="row">

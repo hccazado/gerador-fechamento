@@ -20,7 +20,10 @@ const controller = {
         
     },
     cadastro: (req, res) =>{
-        return res.render("cadastroCliente");
+        return res.render("cadastroCliente", {
+            old: {},
+            isEditing: false
+        });
     },
     cadastrar: async (req, res, next) =>{
         let {nome, email, ie, cnpj, cep, uf, rua, numero, bairro, cidade} = req.body;
@@ -37,6 +40,37 @@ const controller = {
             uf
         });
         return res.redirect("/clientes");
+    },
+    edicao: async(req, res, next)=>{
+        let {id} = req.params;
+        let cliente = await Cliente.findByPk(id);
+
+        return res.render("cadastroCliente", {
+            old: cliente,
+            isEditing: true
+        })
+    },
+    editar: async (req, res, next)=>{
+        let {id} = req.params;
+        let {nome, email, ie, cnpj, cep, uf, rua, numero, bairro, cidade} = req.body;
+        let novosDados = {
+            nome,
+            email,
+            ie,
+            cnpj,
+            cep,
+            rua,
+            numero,
+            bairro,
+            cidade,
+            uf
+        }
+
+        let cliente = await Cliente.findByPk(id);
+
+        cliente.update(novosDados);
+        
+        return res.redirect("/clientes")
     }
 }
 

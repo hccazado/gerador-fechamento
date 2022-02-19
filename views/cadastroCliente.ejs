@@ -1,94 +1,133 @@
 <%-include("partials/header.ejs")%>
-    <div class="container form-cadastro"> 
+<div class="container form-cadastro">
+    <%if(isEditing){%>
+        <form method="POST" action="/clientes/editar/<%=old.id%>">
+    <%} else{ %>
         <form method="POST" action="/clientes/cadastro">
-            <h3 class="text-muted mt-3">Cadastro de Cliente</h3>
-            <div class="row g-2 mt-4">
-                <div class="col-md-12">
-                    <label for="nome" class="form-label">Nome</label>
+    <%}%>
+        <h3 class="text-muted mt-3">Cadastro Cliente</h3>
+        <div class="row g-2 mt-4">
+            <div class="col-md-12">
+                <label for="nome" class="form-label">Nome</label> 
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="nome" value="<%=old.nome%>">
+                <%} else{ %>
                     <input type="text" class="form-control" id="nome" name="nome">
-                </div>
+                <% }%>
             </div>
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <label for="email" class="form-label">Email</label>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="email" value="<%=old.email%>">
+                <%} else{ %>
                     <input type="email" class="form-control" id="email" name="email">
-                </div>
+                <% }%>
             </div>
-            <div class="row g-2 mt-3">
-                <div class="col-md-6">
-                    <label for="ie" class="form-label">IE</label>
+        </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md-6">
+                <label for="ie" class="form-label">IE</label>      
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="ie" value="<%=old.ie%>">
+                <%} else{ %>
                     <input type="text" class="form-control" id="ie" name="ie">
-                </div>
-                <div class="col-md-6">
-                    <label for="cnpj" class="form-label">CNPJ</label>
+                <% }%>
+            </div>
+            <div class="col-md-6">
+                <label for="cnpj" class="form-label">CNPJ</label>   
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="cnpj" value="<%=old.cnpj%>">
+                <%} else{ %>
                     <input type="text" class="form-control" id="cnpj" name="cnpj">
-                </div>
+                <% }%>
             </div>
-            <div class="row mt-3">
-                <div class="col-md-6">
-                    <label for="cep" class="form-label">CEP</label>
-                    <div class="input-group">
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="cep" class="form-label">CEP</label>
+                <div class="input-group">
+                    <%if(isEditing){%>
+                        <input type="text" id="pc" class="form-control" name="cep" value="<%=old.cep%>">
+                    <%} else{ %>
                         <input type="text" class="form-control" id="cep" name="cep">
-                        <button class="btn btn-outline-secondary" type="button" id="getCEP">Buscar</button>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label" for="uf">UF</label>
-                    <select id="uf" class="form-select" name="uf">
-                        <option disabled selected>Selecione UF</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                        <option value="EX">Estrangeiro</option>
-                    </select>
+                    <% }%>
+                    <button class="btn btn-outline-secondary" type="button" id="getCEP">Buscar</button>
                 </div>
             </div>
-            <div class="row g-2 mt-3">
-                <div class="col-md-8">
-                    <label for="rua" class="form-label">End.</label>
+            <div class="col-md-6">
+                <label class="form-label" for="uf">UF</label>
+                <select id="uf" class="form-select" name="uf">
+                    <option disabled selected>Selecione UF</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="EX">Estrangeiro</option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md-8">
+                <label for="rua" class="form-label">End.</label>
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="rua" value="<%=old.rua%>">
+                <%} else{ %>
                     <input type="text" class="form-control" id="rua" name="rua">
-                </div>
-                <div class="col-md-4">
-                    <label for="num" class="form-label">Num.</label>
+                <% }%>
+            </div>
+            <div class="col-md-4">
+                <label for="num" class="form-label">Num.</label>
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="numero" value="<%=old.numero%>">
+                <%} else{ %>
                     <input type="text" class="form-control" id="num" name="numero">
-                </div>
+                <% }%>
             </div>
-            <div class="row g-2 mt-3">
-                <div class="col-md-6">
-                    <label for="bairro" class="form-label">Bairro</label>
+        </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md-6">
+                <label for="bairro" class="form-label">Bairro</label>
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="bairro" value="<%=old.bairro%>">
+                <%} else{ %>
                     <input type="text" class="form-control" id="bairro" name="bairro">
-                </div>
-                <div class="col-md-6">
-                    <label for="cidade" class="form-label">Cidade</label>
-                    <input type="text" class="form-control" id="cidade" name="cidade">
-                </div>
-                
+                <% }%>
             </div>
-            <button class="btn btn-primary mt-5 mb-5">Cadastar</button>
-        </form>
-    </div>
+            <div class="col-md-6">
+                <label for="cidade" class="form-label">Cidade</label>
+                <%if(isEditing){%>
+                    <input type="text" id="pc" class="form-control" name="cidade" value="<%=old.cidade%>">
+                <%} else{ %>
+                    <input type="text" class="form-control" id="cidade" name="cidade">
+                <% }%>
+            </div>        
+        </div>
+        <button class="btn btn-primary mt-5 mb-5">Cadastar</button>
+    </form>
+</div>
 <%-include("partials/footer.ejs")%>

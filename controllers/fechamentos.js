@@ -9,6 +9,7 @@ const controller = {
         let fechamentos = await Fechamento.findAll();
         for(fechamento of fechamentos){
             let estruturaFechamento = {
+                id: fechamento.dataValues.id,
                 nroFechamento: fechamento.dataValues.nroFechamento,
                 pc: fechamento.dataValues.pc,
                 quantidade: fechamento.dataValues.quantidade
@@ -55,7 +56,9 @@ const controller = {
         })
         return res.render("cadastroFechamento",{
             armazens: listaArmazens,
-            clientes: listaClientes
+            clientes: listaClientes,
+            old: {},
+            isEditing: false
         });
     },
     cadastrar: async (req, res, next) =>{
@@ -91,6 +94,71 @@ const controller = {
 
         return res.redirect("/fechamentos");
     },
+    edicao: async(req, res, next) =>{
+        let {id} = req.params;
+        let fechamento = await Fechamento.findByPk(id);
+        let listaClientes = [];
+        let listaArmazens = [];
+
+        let clientes = await Cliente.findAll({
+            attributes: ["id","nome"]
+        }).then(resultado =>{
+            for( cliente of resultado){
+                let clienteEstrutura = {
+                    id: cliente.dataValues.id,
+                    nome: cliente.dataValues.nome
+                }
+                listaClientes.push(clienteEstrutura);
+            }
+        });
+
+        let armazens = await Armazem.findAll({
+            attributes: ["id", "nome"]
+        }).then(resultado =>{
+            for(armazem of resultado){
+                let armazemEstrutura = {
+                    id: armazem.dataValues.id,
+                    nome: armazem.dataValues.nome
+                }
+                listaArmazens.push(armazemEstrutura);
+            }
+        })
+        return res.render("cadastroFechamento",{
+            armazens: listaArmazens,
+            clientes: listaClientes,
+            old: fechamento,
+            isEditing: true
+        });
+        
+    },
+    editar: async (req, res, next) =>{
+        let {id} = req.params;
+        let {pc, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
+        console.log(vendedor +" "+ comprador);
+        let fechamento = await Fechamento.findByPk(id);
+
+        let novosDados = {
+            pc,
+            ID_comprador: vendedor,
+            ID_vendedor: comprador,
+            ID_retirada: retirada,
+            ID_descarga: descarga,
+            condicaoVenda,
+            preco,
+            quantidade,
+            modalidade,
+            descricao,
+            pagamento,
+            corretor,
+            corretagemComprador,
+            corretagemVendedor,
+            obs
+        }
+
+        fechamento.update(novosDados);
+        return res.redirect("/fechamentos");
+
+    },
     detalhar: async (req, res, next) =>{
         let {id} = req.params;
         let fechamento = await Fechamento.findByPk(id);
@@ -108,7 +176,8 @@ const controller = {
             comprador: comprador,
             vendedor: vendedor,
             retirada: retirada,
-            descarga: descarga
+            descarga: descarga,
+            isEditing: false
         })
     }
 }

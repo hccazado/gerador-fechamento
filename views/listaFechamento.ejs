@@ -14,19 +14,21 @@
             <tr>
                 <th>Fechamento</th>
                 <th>PC</th>
-                <th>Comprador</th>
                 <th>Vendedor</th>
+                <th>Comprador</th>
                 <th>Sacas</th>
+                <th>Editar</th>
             </tr>
             </thead>
             <tbody>
                 <%for(fechamento of fechamentos){%>
                     <tr>
-                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.nroFechamento%></a></td>
-                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.pc%></a></td>
-                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.comprador%></a></td>
-                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.vendedor%></a></td>
-                        <td><a href="/fechamentos/editar<%=fechamento.id%>"><%=fechamento.quantidade%></a></td>
+                        <td><a href="/fechamentos/detalhe/<%=fechamento.id%>"><%=fechamento.nroFechamento%></a></td>
+                        <td><a href="/fechamentos/detalhe/<%=fechamento.id%>"><%=fechamento.pc%></a></td>
+                        <td><a href="/fechamentos/detalhe/<%=fechamento.id%>"><%=fechamento.vendedor%></a></td>
+                        <td><a href="/fechamentos/detalhe/<%=fechamento.id%>"><%=fechamento.comprador%></a></td>
+                        <td><a href="/fechamentos/detalhe/<%=fechamento.id%>"><%=fechamento.quantidade%></a></td>
+                        <td><a href="/fechamentos/editar/<%=fechamento.id%>"><img src="https://img.icons8.com/office/30/000000/edit.png"/></a></td>
                     </tr>
                 <%}%>
             </tbody>
