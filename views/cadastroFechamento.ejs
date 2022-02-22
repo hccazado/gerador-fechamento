@@ -134,20 +134,11 @@
                     <%if(isEditing){%>
                         <input type="text" id="pc" class="form-control" name="modalidade" value="<%=old.modalidade%>">
                     <%} else{ %>
-                        <input type="text" id="cd" class="form-control" name="modalidade" value="pagamento e retirada até ">
+                        <input type="text" id="cd" class="form-control" name="modalidade" value="">
                     <% }%>   
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10 mt-3">
-                    <label for="descricao" class="form-label">Descrição</label>
-                    <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="descricao" value="<%=old.descricao%>">
-                    <%} else{ %>
-                        <input type="text" id="descricao" class="form-control" name="descricao" value="Conforme amostra em poder das partes">
-                    <% }%>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-md-10 mt-3">
                     <label for="pagamento" class="form-label">Dados para Pagamento</label> 
@@ -194,7 +185,7 @@
                     <%if(isEditing){%>
                         <textArea id="obs" class="form-control" name="obs"><%=old.obs%></textArea>
                     <%} else{ %>
-                        <textArea id="obs" class="form-control" name="obs"></textArea>
+                        <textArea id="obs" class="form-control" name="obs">Conforme amostra em poder das partes</textArea>
                     <% }%>
                 </div>
             </div>

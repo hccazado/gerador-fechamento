@@ -14,190 +14,195 @@
 </head>
 <body class="nunito_font400">
     <header>
-        <div class="container mt-2">
-            <div class="row">
-                <div class="col">
-                    <img src="https://img.icons8.com/cute-clipart/64/000000/wine-glass.png">
-                </div>
-                <div class="col">
-                    <h1>Caza do Café</h1>
-                </div>
-                <div class="col">
-                    <h6>Fechamento: <%=fechamento.nroFechamento%><br>Data: <%=fechamento.data%></h6>
-                </div>
+        <div class="container-md mt-1">
+            <div class="row justify-content-center">
+                <img class="cabecalho" src="/images/cabecalho.jpg">
+            </div>
+            <div class="row justify-content-end">
+                <span class="fw-bold titulo_fechamento data_fechamento">Fechamento: <%=fechamento.nroFechamento%></span>
             </div>
         </div>
     </header>
     <content>
         <div class="container mt-3">
-            <span class="titulo_fechamento fw-bold">Vendedor</span>
-            <div class="row">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Nome:</span> <%=vendedor.nome%>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">CNPJ/CPF:</span> <%=vendedor.cnpj%>
-                </div>
-                <div class="col border border-mutted">
-                    <span class="fw-bold">IE:</span> <%=vendedor.ie%>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">End:</span> <%=vendedor.rua%>
-                </div>
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Num:</span> <%=vendedor.numero%>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Bairro:</span> <%=vendedor.bairro%>
-                </div>
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Cidade:</span> <%=vendedor.cidade%> - <span class="fw-bold">UF:</span> <%=vendedor.uf%>
-                </div>
-            </div>
-            <span class="titulo_fechamento fw-bold">Comprador</span>
-            <div class="row">
-                <div class="col border border-mutted">
+            <span class="titulo_fechamento fw-bold">COMPRADOR</span>
+            <div class="row border-top border-muted">
+                <div class="col">
                     <span class="fw-bold">Nome:</span> <%=comprador.nome%>
                 </div>
             </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">CNPJ/CPF:</span> <%=comprador.cnpj%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">IE:</span> <%=comprador.ie%>
                 </div>
             </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">End:</span> <%=comprador.rua%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Num:</span> <%=comprador.numero%>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col border border-mutted">
+            <div class="row mb-2">
+                <div class="col">
                     <span class="fw-bold">Bairro:</span> <%=comprador.bairro%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Cidade:</span> <%=comprador.cidade%> - <span class="fw-bold">UF:</span> <%=comprador.uf%>
                 </div>
             </div>
-            <span class="titulo_fechamento fw-bold">Local de Retirada</span>
+            <span class="titulo_fechamento fw-bold">VENDEDOR</span>
+            <div class="row border-top border-muted">
+                <div class="col">
+                    <span class="fw-bold">Nome:</span> <%=vendedor.nome%>
+                </div>
+            </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
+                    <span class="fw-bold">CNPJ/CPF:</span> <%=vendedor.cnpj%>
+                </div>
+                <div class="col">
+                    <span class="fw-bold">IE:</span> <%=vendedor.ie%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="fw-bold">End:</span> <%=vendedor.rua%>
+                </div>
+                <div class="col">
+                    <span class="fw-bold">Num:</span> <%=vendedor.numero%>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <span class="fw-bold">Bairro:</span> <%=vendedor.bairro%>
+                </div>
+                <div class="col">
+                    <span class="fw-bold">Cidade:</span> <%=vendedor.cidade%> - <span class="fw-bold">UF:</span> <%=vendedor.uf%>
+                </div>
+            </div>
+            <span class="titulo_fechamento fw-bold">DESCRIÇÃO DE VENDA</span>
+            <div class="row border-top border-muted">
+                <div class="col">
+                    <span class="fw-bold">Condição de venda:</span> <%=fechamento.condicaoVenda%>
+                </div>
+                <div class="col">
+                    <span class="fw-bold">Modalidade:</span> <%=fechamento.modalidade%>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <span class="fw-bold">Quantidade:</span> <%=fechamento.quantidade%><span class="fw-bold"> scs</span>
+                </div>
+                <div class="col">
+                    <span class="fw-bold">Preço:</span> R$ <%=fechamento.preco%> <span class="fw-bold"> /sc 60KG</span>
+                </div>
+            </div>
+            <span class="titulo_fechamento fw-bold">REFERÊNCIA DE COMPRA</span>
+            <div class="row border-top border-muted mb-2">
+                <div class="col">
+                    <span class="fw-bold">PC</span> <%=fechamento.pc%>
+                </div>
+            </div>
+            <span class="titulo_fechamento fw-bold">LOCAL DE RETIRADA</span>
+            <div class="row border-top border-muted">
+                <div class="col">
                     <span class="fw-bold">Nome:</span> <%=retirada.nome%>
                 </div>
             </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">CNPJ/CPF:</span> <%=retirada.cnpj%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">IE:</span> <%=retirada.ie%>
                 </div>
             </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">End:</span> <%=retirada.rua%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Num:</span> <%=retirada.numero%>
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Bairro:</span> <%=retirada.bairro%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Cidade:</span> <%=retirada.cidade%> - <span class="fw-bold">UF:</span> <%=retirada.uf%>
                 </div>
             </div>
-            <span class="titulo_fechamento fw-bold">Local de Descarga</span>
-            <div class="row">
-                <div class="col border border-mutted">
+            <span class="titulo_fechamento fw-bold">LOCAL DE DESCARGA</span>
+            <div class="row border-top border-muted">
+                <div class="col">
                     <span class="fw-bold">Nome:</span> <%=descarga.nome%>
                 </div>
             </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">CNPJ/CPF:</span> <%=descarga.cnpj%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">IE:</span> <%=descarga.ie%>
                 </div>
             </div>
             <div class="row">
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">End:</span> <%=descarga.rua%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Num:</span> <%=descarga.numero%>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col border border-mutted">
+            <div class="row mb-2">
+                <div class="col">
                     <span class="fw-bold">Bairro:</span> <%=descarga.bairro%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Cidade:</span> <%=descarga.cidade%> - <span class="fw-bold">UF:</span> <%=descarga.uf%>
                 </div>
             </div>
-            <span class="titulo_fechamento fw-bold">Descrição da Venda</span>
-            <div class="row">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Condição de venda:</span> <%=fechamento.condicaoVenda%>
-                </div>
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Modalidade:</span> <%=fechamento.modalidade%>
+            <span class="titulo_fechamento fw-bold">CORRETAGEM</span>
+            <div class="row border-top border-muted">
+                <div class="col">
+                    <span class="fw-bold">Corretor:</span> <%=fechamento.corretor%>
                 </div>
             </div>
-            <div class="row">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Quantidade:</span> <%=fechamento.quantidade%><span class="fw-bold"> scs</span>
-                </div>
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Preço:</span>R$ <%=fechamento.preco%> <span class="fw-bold"> /sc 60KG</span>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Descrição:</span> <%=fechamento.descricao%>
-                </div>
-            </div>
-            <span class="titulo_fechamento fw-bold">Corretagem</span>
-            <div class="row">
-                <div class="col border border-mutted">
-                    <span class="fw-bold">Corretagem:</span> <%=fechamento.corretor%>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col border border-mutted">
+            <div class="row mb-2">
+                <div class="col">
                     <span class="fw-bold">Vendedor:</span> <%=fechamento.corretagemVendedor%>
                 </div>
-                <div class="col border border-mutted">
+                <div class="col">
                     <span class="fw-bold">Comprador:</span> <%=fechamento.corretagemComprador%>
                 </div>
             </div>
-            <span class="titulo_fechamento fw-bold">Observações</span>
-            <div class="row mb-3 ">
-                <div class="col border border-mutted">
+            <span class="titulo_fechamento fw-bold">OBSERVAÇÕES</span>
+            <div class="row border-top border-muted mb-2">
+                <div class="col">
                     <%=fechamento.obs%>
                 </div>
             </div> 
-            <div class="row mb-3">
+            <div class="row">
+                <div class="col border-top text-center mt-4">
+                    Comprador
+                </div>
+                <div class="col"></div>
+                <div class="col border-top text-center mt-4">
+                    Vendedor
+                </div>
+            </div>    
+            <div class="row mb-2 mt-2">
                     Patrocínio, <%=fechamento.data%>
             </div>
             <div class="row mb-3">
                P.S: Enviar NF-e para jacazado@hotmail.com
-        </div>        
+            </div>    
         </div>  
     </content>
 </body>

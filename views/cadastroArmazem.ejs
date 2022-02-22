@@ -2,7 +2,7 @@
 <div class="container form-cadastro">
     <%if(isEditing){%>
         <form method="POST" action="/armazens/editar/<%=old.id%>">
-    <%} else %>
+    <%} else {%>
         <form method="POST" action="/armazens/cadastro">
     <%}%>
         <h3 class="text-muted mt-3">Cadastro Armazém</h3>

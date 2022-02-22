@@ -16,6 +16,30 @@
   font-size: 18px;
 }
 
+.logo_fechamento{
+  width: 60px;
+}
+
+.cabecalho{
+  width: 70%;
+}
+
+.data_fechamento{
+  text-align: right;
+}
+
+.titulo{
+  font-size: 12px;
+}
+
+.titulo_fechamento{
+  font-size: 14px;
+}
+
+.container_dados{
+  height: 80px;
+}
+
 .table-responsive{
   height: 500px;
   overflow: scroll;   

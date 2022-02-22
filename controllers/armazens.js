@@ -21,7 +21,10 @@ const controller = {
         
     },
     cadastro: (req, res, next)=>{
-        return res.render("cadastroArmazem");
+        return res.render("cadastroArmazem", {
+            isEditing: false,
+            old: {}
+        });
     },
     cadastrar: (req, res, next) =>{
         let {nome, email, ie, cnpj, cep, uf, rua, numero, bairro, cidade} = req.body;
@@ -36,6 +39,38 @@ const controller = {
             cidade,
             uf
         });
+        
+        return res.redirect("/armazens");
+    },
+    edicao: async(req, res, next)=>{
+        let {id} = req.params;
+        let armazem = await Armazem.findByPk(id);
+        console.log(armazem);
+
+        return res.render("cadastroCliente", {
+            old: armazem,
+            isEditing: true
+        })
+    },
+    editar: async (req, res, next)=>{
+        let {id} = req.params;
+        let {nome, email, ie, cnpj, cep, uf, rua, numero, bairro, cidade} = req.body;
+        let novosDados = {
+            nome,
+            email,
+            ie,
+            cnpj,
+            cep,
+            rua,
+            numero,
+            bairro,
+            cidade,
+            uf
+        }
+
+        let armazem = await Armazem.findByPk(id);
+
+        armazem.update(novosDados);
         
         return res.redirect("/armazens");
     }
