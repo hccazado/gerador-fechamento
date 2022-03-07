@@ -26,7 +26,7 @@ const controller = {
         });
     },
     cadastrar: async (req, res, next) =>{
-        let {nome, email, ie, cnpj, cep, uf, rua, numero, bairro, cidade} = req.body;
+        let {nome, email, ie, cnpj, cep, uf, rua, numero, complemento, bairro, cidade} = req.body;
         let cliente  = await Cliente.create({
             nome,
             email,
@@ -35,6 +35,7 @@ const controller = {
             cep,
             rua,
             numero,
+            complemento, 
             bairro,
             cidade,
             uf
@@ -52,7 +53,7 @@ const controller = {
     },
     editar: async (req, res, next)=>{
         let {id} = req.params;
-        let {nome, email, ie, cnpj, cep, uf, rua, numero, bairro, cidade} = req.body;
+        let {nome, email, ie, cnpj, cep, uf, rua, numero, complemento, bairro, cidade} = req.body;
         let novosDados = {
             nome,
             email,
@@ -61,6 +62,7 @@ const controller = {
             cep,
             rua,
             numero,
+            complemento,
             bairro,
             cidade,
             uf

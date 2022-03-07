@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <label for="nome" class="form-label">Nome</label> 
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="nome" value="<%=old.nome%>">
+                    <input type="text" id="nome" class="form-control" name="nome" value="<%=old.nome%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="nome" name="nome">
                 <% }%>
@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <label for="email" class="form-label">Email</label>
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="email" value="<%=old.email%>">
+                    <input type="text" id="email" class="form-control" name="email" value="<%=old.email%>">
                 <%} else{ %>
                     <input type="email" class="form-control" id="email" name="email">
                 <% }%>
@@ -30,7 +30,7 @@
             <div class="col-md-6">
                 <label for="ie" class="form-label">IE</label>      
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="email" value="<%=old.ie%>">
+                    <input type="text" id="ie" class="form-control" name="ie" value="<%=old.ie%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="ie" name="ie">
                 <% }%>
@@ -38,7 +38,7 @@
             <div class="col-md-6">
                 <label for="cnpj" class="form-label">CNPJ</label>   
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="cnpj" value="<%=old.cnpj%>">
+                    <input type="text" id="cnpj" class="form-control" name="cnpj" value="<%=old.cnpj%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="cnpj" name="cnpj">
                 <% }%>
@@ -49,7 +49,7 @@
                 <label for="cep" class="form-label">CEP</label>
                 <div class="input-group">
                     <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="cep" value="<%=old.cep%>">
+                        <input type="text" id="cep" class="form-control" name="cep" value="<%=old.cep%>">
                     <%} else{ %>
                         <input type="text" class="form-control" id="cep" name="cep">
                     <% }%>
@@ -95,7 +95,7 @@
             <div class="col-md-8">
                 <label for="rua" class="form-label">End.</label>
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="rua" value="<%=old.rua%>">
+                    <input type="text" id="rua" class="form-control" name="rua" value="<%=old.rua%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="rua" name="rua">
                 <% }%>
@@ -103,9 +103,19 @@
             <div class="col-md-4">
                 <label for="num" class="form-label">Num.</label>
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="numero" value="<%=old.numero%>">
+                    <input type="text" id="num" class="form-control" name="numero" value="<%=old.numero%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="num" name="numero">
+                <% }%>
+            </div>
+        </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md-5">
+                <label for="complemento" class="form-label">Complemento</label>
+                <%if(isEditing){%>
+                    <input type="text" id="complemento" class="form-control" name="complemento" value="<%=old.complemento%>">
+                <%} else{ %>
+                    <input type="text" class="form-control" id="complemento" name="complemento">
                 <% }%>
             </div>
         </div>
@@ -113,7 +123,7 @@
             <div class="col-md-6">
                 <label for="bairro" class="form-label">Bairro</label>
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="bairro" value="<%=old.bairro%>">
+                    <input type="text" id="bairro" class="form-control" name="bairro" value="<%=old.bairro%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="bairro" name="bairro">
                 <% }%>
@@ -121,7 +131,7 @@
             <div class="col-md-6">
                 <label for="cidade" class="form-label">Cidade</label>
                 <%if(isEditing){%>
-                    <input type="text" id="pc" class="form-control" name="cidade" value="<%=old.cidade%>">
+                    <input type="text" id="cidade" class="form-control" name="cidade" value="<%=old.cidade%>">
                 <%} else{ %>
                     <input type="text" class="form-control" id="cidade" name="cidade">
                 <% }%>
@@ -130,4 +140,6 @@
         <button class="btn btn-primary mt-5 mb-5">Cadastar</button>
     </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="javascripts/geradorEndereco.js"></script>
 <%-include("partials/footer.ejs")%>

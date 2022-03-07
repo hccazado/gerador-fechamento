@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     cep: DataTypes.CHAR(10),
     rua: DataTypes.STRING,
     numero: DataTypes.INTEGER,
+    complemento: DataTypes.STRING,
     bairro: DataTypes.STRING,
     cidade: DataTypes.STRING,
     uf: DataTypes.STRING

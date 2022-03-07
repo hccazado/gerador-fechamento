@@ -29,6 +29,9 @@ module.exports = {
       numero: {
         type: Sequelize.INTEGER
       },
+      complemento: {
+        type: Sequelize.STRING
+      },
       bairro: {
         type: Sequelize.STRING
       },
