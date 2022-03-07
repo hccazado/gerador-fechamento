@@ -1,6 +1,7 @@
 const {Fechamento, Cliente, Armazem} = require("../models");
 const moment = require("moment");
 
+
 const controller = {
 
     index: async (req, res, next) => {
@@ -22,7 +23,7 @@ const controller = {
         });
         listaFechamentos.push(estruturaFechamento);
     }
-        
+    
         return res.render("listaFechamento", {
             fechamentos: listaFechamentos
         });
@@ -62,35 +63,77 @@ const controller = {
         });
     },
     cadastrar: async (req, res, next) =>{
-        let {pc, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
+        let {pc, nFechamento, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
         let nroFechamento;
-        
-        let dataAtual = moment().format('L');
+                
+        //gerando número de fechamento (caso não informado no formulario)
+        if(!nFechamento){
+            //buscando ultimo registro do banco
+            let registroAnterior = await Fechamento.findOne({
+                order:[['id', 'DESC']]
+            });
+            //Não há fechamento cadastro, gera o primeiro com valor 001/ano corrente
+            if(!registroAnterior){
+                nroFechamento = "1".padStart(3, 0) +"/"+moment().year();
+            }
+            //Encontrou fechamento cadastrado, gera novo sequencial incrementando 1 ao valor anterior
+            else{
+                //gerando array do valor do fechamento antetior, separando a string por "/"
+                let fechamentoAnterior = registroAnterior.dataValues.nroFechamento.split("/");
+                //convertendo o sequencial de fechamento em Integer e incrementando em 1 o valor
+                nroFechamento = parseInt(fechamentoAnterior[0]) + 1;
+                //gerando nova string de numero de fechamento
+                nroFechamento = nroFechamento.toString().padStart(3, 0) +"/"+moment().year();
+            }
 
-        console.log(dataAtual);
-        let fechamento = await Fechamento.create({
-            pc,
-            data: moment().format('L'),
-            ID_comprador: vendedor,
-            ID_vendedor: comprador,
-            ID_retirada: retirada,
-            ID_descarga: descarga,
-            condicaoVenda,
-            preco,
-            quantidade,
-            modalidade,
-            descricao,
-            pagamento,
-            corretor,
-            corretagemComprador,
-            corretagemVendedor,
-            obs
-        });
-
-        nroFechamento = fechamento.dataValues.id.toString().padStart(3, 0) +"/"+moment().year();
-        fechamento.update({
-            nroFechamento
-        });
+            //Cadastrando fechamento
+            let fechamento = await Fechamento.create({
+                pc,
+                data: moment().format('L'),
+                nroFechamento,
+                ID_comprador: vendedor,
+                ID_vendedor: comprador,
+                ID_retirada: retirada,
+                ID_descarga: descarga,
+                condicaoVenda,
+                preco,
+                quantidade,
+                modalidade,
+                descricao,
+                pagamento,
+                corretor,
+                corretagemComprador,
+                corretagemVendedor,
+                obs
+            });
+            //Atualizando número do fechamento
+            fechamento.update({
+                nroFechamento
+            });
+        }
+        //criando fechamento com valor informado/
+        else{
+            nroFechamento = nFechamento.padStart(3, 0) +"/"+moment().year();
+            let fechamento = await Fechamento.create({
+                pc,
+                data: moment().format('L'),
+                nroFechamento,
+                ID_comprador: vendedor,
+                ID_vendedor: comprador,
+                ID_retirada: retirada,
+                ID_descarga: descarga,
+                condicaoVenda,
+                preco,
+                quantidade,
+                modalidade,
+                descricao,
+                pagamento,
+                corretor,
+                corretagemComprador,
+                corretagemVendedor,
+                obs
+            });
+        }
 
         return res.redirect("/fechamentos");
     },
@@ -133,14 +176,15 @@ const controller = {
     },
     editar: async (req, res, next) =>{
         let {id} = req.params;
-        let {pc, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
-        console.log(vendedor +" "+ comprador);
+        let {nFechamento, pc, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
         let fechamento = await Fechamento.findByPk(id);
+        console.log(fechamento);
 
         let novosDados = {
             pc,
-            ID_comprador: vendedor,
-            ID_vendedor: comprador,
+            nroFechamento: nFechamento,
+            ID_comprador: comprador,
+            ID_vendedor: vendedor,
             ID_retirada: retirada,
             ID_descarga: descarga,
             condicaoVenda,
