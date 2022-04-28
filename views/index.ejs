@@ -1,5 +1,8 @@
 <%-include("partials/header.ejs")%>
 <div class="container mt-3">
+  <%if(erro){%>
+    <p class="text-danger text-center fw-bold mb-3">Ops! algo deu errado!</p>
+  <%}%>
   <div class="row row-cols-1 row-cols-sm-3 g-2">
     <div class="col">
     <div class="card d-flex bg-light justify-content-center align-content-center" style="max-width: 18rem;">

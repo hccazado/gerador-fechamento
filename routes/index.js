@@ -12,4 +12,6 @@ router.get('/login', loginController.getLogin);
 
 router.post("/login", loginController.postLogin);
 
+router.get("/erro", indexController.getErro);
+
 module.exports = router;

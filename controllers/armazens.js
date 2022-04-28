@@ -28,26 +28,29 @@ const controller = {
     },
     cadastrar: (req, res, next) =>{
         let {nome, email, ie, cnpj, cep, uf, rua, numero, complemento, bairro, cidade} = req.body;
-        let armazem = Armazem.create({
-            nome,
-            email,
-            ie,
-            cnpj,
-            cep,
-            rua,
-            numero,
-            complemento, 
-            bairro,
-            cidade,
-            uf
-        });
-        
-        return res.redirect("/armazens");
+        try{
+            let armazem = Armazem.create({
+                nome,
+                email,
+                ie,
+                cnpj,
+                cep,
+                rua,
+                numero,
+                complemento, 
+                bairro,
+                cidade,
+                uf
+            }); 
+            return res.redirect("/armazens");
+        }
+        catch (error){
+            return res.redirect("/erro");
+        }
     },
     edicao: async(req, res, next)=>{
         let {id} = req.params;
         let armazem = await Armazem.findByPk(id);
-        console.log(armazem);
 
         return res.render("cadastroArmazem", {
             old: armazem,
@@ -70,12 +73,14 @@ const controller = {
             cidade,
             uf
         }
-
-        let armazem = await Armazem.findByPk(id);
-
-        armazem.update(novosDados);
-        
-        return res.redirect("/armazens");
+        try{
+            let armazem = await Armazem.findByPk(id);
+            armazem.update(novosDados);
+            return res.redirect("/armazens");
+        }
+        catch (error){
+            return res.redirect("/erro");
+        }
     }
 }
 

@@ -93,6 +93,7 @@ const controller = {
             nroFechamento = nFechamento.padStart(3, 0) +"/"+moment().year();
         }
 
+        try{
             //recuperando conta de pagamento do vendedor
             let cadastro = await Cliente.findByPk(vendedor).then( retorno =>{
                 contaVendedor = retorno.dataValues.conta;
@@ -117,11 +118,12 @@ const controller = {
                     corretagemVendedor,
                     obs
                 });
-            })
-
-
-            
-        return res.redirect("/fechamentos");
+            })    
+            return res.redirect("/fechamentos");
+        }
+        catch (error){
+            return res.redirect("/erro");
+        }
     },
     edicao: async(req, res, next) =>{
         let {id} = req.params;
@@ -164,7 +166,6 @@ const controller = {
         let {id} = req.params;
         let {nFechamento, pc, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
         let fechamento = await Fechamento.findByPk(id);
-        console.log(fechamento);
 
         let novosDados = {
             pc,

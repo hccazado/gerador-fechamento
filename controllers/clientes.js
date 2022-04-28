@@ -27,21 +27,26 @@ const controller = {
     },
     cadastrar: async (req, res, next) =>{
         let {nome, email, ie, cnpj, conta, cep, uf, rua, numero, complemento, bairro, cidade} = req.body;
-        let cliente  = await Cliente.create({
-            nome,
-            email,
-            ie,
-            cnpj,
-            conta,
-            cep,
-            rua,
-            numero,
-            complemento, 
-            bairro,
-            cidade,
-            uf
-        });
-        return res.redirect("/clientes");
+        try{
+            let cliente  = await Cliente.create({
+                nome,
+                email,
+                ie,
+                cnpj,
+                conta,
+                cep,
+                rua,
+                numero,
+                complemento, 
+                bairro,
+                cidade,
+                uf
+            });
+            return res.redirect("/clientes");
+        }
+        catch (error){
+            return res.redirect("/erro");
+        }
     },
     edicao: async(req, res, next)=>{
         let {id} = req.params;
@@ -50,7 +55,7 @@ const controller = {
         return res.render("cadastroCliente", {
             old: cliente,
             isEditing: true
-        })
+        });
     },
     editar: async (req, res, next)=>{
         let {id} = req.params;
@@ -69,12 +74,14 @@ const controller = {
             cidade,
             uf
         }
-
-        let cliente = await Cliente.findByPk(id);
-
-        cliente.update(novosDados);
-        
-        return res.redirect("/clientes")
+        try{
+            let cliente = await Cliente.findByPk(id);
+            cliente.update(novosDados); 
+            return res.redirect("/clientes");
+        }
+        catch (error){
+            return res.redirect("/erro");
+        }
     }
 }
 
