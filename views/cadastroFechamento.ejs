@@ -35,8 +35,6 @@
                             <% for(cliente of clientes){%>
                                 <%if(cliente.id == old.ID_vendedor){%>
                                     <option value="<%=cliente.id%>" selected><%=cliente.nome%></option>
-                                <%} else{%>
-                                    <option value="<%=cliente.id%>"><%=cliente.nome%></option>
                                 <%}%> 
                             <%}%>
                         <%} else{ %>
@@ -56,8 +54,6 @@
                             <% for(cliente of clientes){%>
                                 <%if(cliente.id == old.ID_comprador){%>
                                     <option value="<%=cliente.id%>" selected><%=cliente.nome%></option>
-                                <%} else{%>
-                                    <option value="<%=cliente.id%>"><%=cliente.nome%></option>
                                 <%}%> 
                             <%}%>
                         <%} else{ %>
@@ -112,11 +108,11 @@
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
-                    <label for="cd" class="form-label">Condição de Venda</label> 
+                    <label for="cv" class="form-label">Condição de Venda</label> 
                     <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="condicaoVenda" value="<%=old.condicaoVenda%>">
+                        <input type="text" id="cv" class="form-control" name="condicaoVenda" value="<%=old.condicaoVenda%>">
                     <%} else{ %>
-                        <input type="text" id="cd" class="form-control" name="condicaoVenda">
+                        <input type="text" id="cv" class="form-control" name="condicaoVenda">
                     <% }%>   
                 </div>
             </div>
@@ -124,15 +120,15 @@
                 <div class="col-md-5 mt-3">
                     <label for="preco" class="form-label">Preço</label>
                     <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="preco" value="<%=old.preco%>">
+                        <input type="number" step="any" id="preco" class="form-control" name="preco" value="<%=old.preco%>">
                     <%} else{ %>
-                        <input type="text" id="preco "class="form-control" name="preco">
+                        <input type="number" step="any" id="preco "class="form-control" name="preco">
                     <% }%> 
                 </div>
                 <div class="col-md-5 mt-3">
                     <label for="quantidade" class="form-label">Quantidade</label>
                     <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="quantidade" value="<%=old.quantidade%>">
+                        <input type="text" id="quantidade" class="form-control" name="quantidade" value="<%=old.quantidade%>">
                     <%} else{ %>
                         <input type="text" id="quantidade "class="form-control" name="quantidade">
                     <% }%> 
@@ -140,31 +136,30 @@
             </div>
             <div class="row">
                 <div class="col-md-10 mt-3">
-                    <label for="cd" class="form-label">Modalidade</label>
+                    <label for="modalidade" class="form-label">Modalidade</label>
                     <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="modalidade" value="<%=old.modalidade%>">
+                        <input type="text" id="modalidade" class="form-control" name="modalidade" value="<%=old.modalidade%>">
                     <%} else{ %>
-                        <input type="text" id="cd" class="form-control" name="modalidade" value="">
+                        <input type="text" id="modalidade" class="form-control" name="modalidade" value="">
                     <% }%>   
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-10 mt-3">
-                    <label for="pagamento" class="form-label">Dados para Pagamento</label> 
-                    <%if(isEditing){%>
-                        <input type="text" id="pc" class="form-control" name="pagamento" value="<%=old.pagamento%>">
-                    <%} else{ %>
-                        <input type="text" id="pagamento" class="form-control" name="pagamento">
-                    <% }%>
+            <%if(isEditing){%>
+                <div class="row">
+                    <div class="col-md-10 mt-3">
+                        <label for="pagamento" class="form-label">Dados para Pagamento do Fechamento</label> 
+                        
+                            <input type="text" id="pagamento" class="form-control" name="pagamento" value="<%=old.pagamento%>">
+                        
+                    </div>
                 </div>
-            </div>
+            <%}%>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-5 mt-3">
                         <label for="corretor" class="form-label">Corretor</label>    
                         <%if(isEditing){%>
-                            <input type="text" id="pc" class="form-control" name="corretor" value="<%=old.corretor%>">
+                            <input type="text" id="corretor" class="form-control" name="corretor" value="<%=old.corretor%>">
                         <%} else{ %>
                             <input type="text" id="corretor" class="form-control" name="corretor" value="NETTUZZI CORRETORA">
                         <% }%>
@@ -174,7 +169,7 @@
                     <div class="col-md-5 mt-3">
                         <label for="corretagemV" class="form-label">Corretagem Vendedor</label>
                         <%if(isEditing){%>
-                            <input type="text" id="pc" class="form-control" name="corretagemVendedor" value="<%=old.corretagemVendedor%>">
+                            <input type="text" id="corretagemV" class="form-control" name="corretagemVendedor" value="<%=old.corretagemVendedor%>">
                         <%} else{ %>
                             <input type="number" step="any" id="corretagemV" class="form-control" name="corretagemVendedor" value="0.0">
                         <% }%>
@@ -182,7 +177,7 @@
                     <div class="col-md-5 mt-3">
                         <label for="corretagemC" class="form-label">Corretagem Comprador</label>
                         <%if(isEditing){%>
-                            <input type="text" id="pc" class="form-control" name="corretagemComprador" value="<%=old.corretagemComprador%>">
+                            <input type="text" id="corretagemC" class="form-control" name="corretagemComprador" value="<%=old.corretagemComprador%>">
                         <%} else{ %>
                             <input type="number" step="any" id="corretagemC" class="form-control" name="corretagemComprador" value="0.5">
                         <% }%>

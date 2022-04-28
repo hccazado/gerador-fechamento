@@ -28,12 +28,8 @@
   text-align: right;
 }
 
-.titulo{
-  font-size: 12px;
-}
-
 .titulo_fechamento{
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .container_dados{
@@ -62,4 +58,12 @@
 
 .table-responsive tbody td a:hover{
   color: darkred;
+}
+
+.obs {
+  font-size: 12px;
+}
+
+.fechamento {
+  font-size: 20px;
 }

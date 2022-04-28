@@ -20,6 +20,9 @@ module.exports = {
       cnpj: {
         type: Sequelize.STRING
       },
+      conta: {
+        type: Sequelize.STRING
+      },
       cep: {
         type: Sequelize.STRING
       },

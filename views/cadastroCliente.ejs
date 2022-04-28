@@ -44,6 +44,16 @@
                 <% }%>
             </div>
         </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md-12">
+                <label for="conta" class="form-label">Conta</label>      
+                <%if(isEditing){%>
+                    <input type="text" id="conta" class="form-control" name="conta" value="<%=old.conta%>">
+                <%} else{ %>
+                    <input type="text" id="conta" class="form-control" name="conta">
+                <% }%>
+            </div>
+        </div>
         <div class="row mt-3">
             <div class="col-md-6">
                 <label for="cep" class="form-label">CEP</label>

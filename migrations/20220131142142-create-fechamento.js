@@ -60,7 +60,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       preco: {
-        type: Sequelize.FLOAT
+        type: Sequelize.DECIMAL(10,2)
       },
       quantidade: {
         type: Sequelize.FLOAT

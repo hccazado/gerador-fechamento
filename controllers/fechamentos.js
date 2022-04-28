@@ -1,5 +1,6 @@
 const {Fechamento, Cliente, Armazem} = require("../models");
 const moment = require("moment");
+moment.locale('en-us');
 
 
 const controller = {
@@ -65,7 +66,9 @@ const controller = {
     cadastrar: async (req, res, next) =>{
         let {pc, nFechamento, vendedor, comprador, retirada, descarga, condicaoVenda, preco, quantidade, modalidade, descricao, pagamento, corretor, corretagemVendedor, corretagemComprador, obs} = req.body;
         let nroFechamento;
-                
+        let contaVendedor;
+        moment.locale('en-us');
+        
         //gerando número de fechamento (caso não informado no formulario)
         if(!nFechamento){
             //buscando ultimo registro do banco
@@ -85,56 +88,39 @@ const controller = {
                 //gerando nova string de numero de fechamento
                 nroFechamento = nroFechamento.toString().padStart(3, 0) +"/"+moment().year();
             }
-
-            //Cadastrando fechamento
-            let fechamento = await Fechamento.create({
-                pc,
-                data: moment().format('L'),
-                nroFechamento,
-                ID_comprador: vendedor,
-                ID_vendedor: comprador,
-                ID_retirada: retirada,
-                ID_descarga: descarga,
-                condicaoVenda,
-                preco,
-                quantidade,
-                modalidade,
-                descricao,
-                pagamento,
-                corretor,
-                corretagemComprador,
-                corretagemVendedor,
-                obs
-            });
-            //Atualizando número do fechamento
-            fechamento.update({
-                nroFechamento
-            });
         }
-        //criando fechamento com valor informado/
         else{
             nroFechamento = nFechamento.padStart(3, 0) +"/"+moment().year();
-            let fechamento = await Fechamento.create({
-                pc,
-                data: moment().format('L'),
-                nroFechamento,
-                ID_comprador: vendedor,
-                ID_vendedor: comprador,
-                ID_retirada: retirada,
-                ID_descarga: descarga,
-                condicaoVenda,
-                preco,
-                quantidade,
-                modalidade,
-                descricao,
-                pagamento,
-                corretor,
-                corretagemComprador,
-                corretagemVendedor,
-                obs
-            });
         }
 
+            //recuperando conta de pagamento do vendedor
+            let cadastro = await Cliente.findByPk(vendedor).then( retorno =>{
+                contaVendedor = retorno.dataValues.conta;
+            }).then(_=>{
+                //Cadastrando fechamento
+                let fechamento = Fechamento.create({
+                    pc,
+                    data: moment().format('L'),
+                    nroFechamento,
+                    ID_comprador: comprador,
+                    ID_vendedor: vendedor,
+                    ID_retirada: retirada,
+                    ID_descarga: descarga,
+                    condicaoVenda,
+                    preco,
+                    quantidade,
+                    modalidade,
+                    descricao,
+                    pagamento: contaVendedor,
+                    corretor,
+                    corretagemComprador,
+                    corretagemVendedor,
+                    obs
+                });
+            })
+
+
+            
         return res.redirect("/fechamentos");
     },
     edicao: async(req, res, next) =>{

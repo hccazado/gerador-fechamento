@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     ID_retirada: DataTypes.INTEGER,
     ID_descarga: DataTypes.INTEGER,
     condicaoVenda: DataTypes.STRING,
-    preco: DataTypes.FLOAT,
+    preco: DataTypes.DECIMAL(10,2),
     quantidade: DataTypes.FLOAT,
     modalidade: DataTypes.STRING,
     descricao: DataTypes.STRING,

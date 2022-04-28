@@ -49,7 +49,7 @@ const controller = {
         let armazem = await Armazem.findByPk(id);
         console.log(armazem);
 
-        return res.render("cadastroCliente", {
+        return res.render("cadastroArmazem", {
             old: armazem,
             isEditing: true
         })

@@ -25,8 +25,16 @@
     </header>
     <content>
         <div class="container mt-3">
+            <%if(fechamento.pc){%>
+            <span class="titulo_fechamento fw-bold">REFERÊNCIA DE COMPRA</span>
+            <div class="row border-top border-dark mb-1">
+                <div class="col">
+                    <span class="fw-bold titulo_fechamento">PC <%=fechamento.pc%> </span>
+                </div>
+            </div>
+            <%}%>
             <span class="titulo_fechamento fw-bold">COMPRADOR</span>
-            <div class="row border-top border-muted">
+            <div class="row border-top border-dark">
                 <div class="col">
                     <span class="fw-bold">Nome:</span> <%=comprador.nome%>
                 </div>
@@ -56,7 +64,7 @@
                 </div>
             </div>
             <span class="titulo_fechamento fw-bold">VENDEDOR</span>
-            <div class="row border-top border-muted">
+            <div class="row border-top border-dark">
                 <div class="col">
                     <span class="fw-bold">Nome:</span> <%=vendedor.nome%>
                 </div>
@@ -77,7 +85,7 @@
                     <span class="fw-bold">Num:</span> <%=vendedor.numero%> - <%=vendedor.complemento%>
                 </div>
             </div>
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col">
                     <span class="fw-bold">Bairro:</span> <%=vendedor.bairro%>
                 </div>
@@ -85,8 +93,21 @@
                     <span class="fw-bold">Cidade:</span> <%=vendedor.cidade%> - <span class="fw-bold">UF:</span> <%=vendedor.uf%>
                 </div>
             </div>
+	        <div class="row mb-2">
+                <div class="col">
+                    <span class="fw-bold">Dados Pagamento:</span> <%=fechamento.pagamento%>
+                </div>
+            </div>
             <span class="titulo_fechamento fw-bold">DESCRIÇÃO DE VENDA</span>
-            <div class="row border-top border-muted">
+	        <div class="row border-top border-dark">
+                <div class="col">
+                    <span class="fw-bold">Quantidade:</span> <%=fechamento.quantidade%><span class="fw-bold"> scs</span>
+                </div>
+                <div class="col">
+                    <span class="fw-bold">Preço:</span> R$ <%=fechamento.preco%> <span class="fw-bold"> /sc 60KG</span>
+                </div>
+            </div>            
+            <div class="row mb-2">
                 <div class="col">
                     <span class="fw-bold">Condição de venda:</span> <%=fechamento.condicaoVenda%>
                 </div>
@@ -94,22 +115,8 @@
                     <span class="fw-bold">Modalidade:</span> <%=fechamento.modalidade%>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <span class="fw-bold">Quantidade:</span> <%=fechamento.quantidade%><span class="fw-bold"> scs</span>
-                </div>
-                <div class="col">
-                    <span class="fw-bold">Preço:</span> R$ <%=fechamento.preco%> <span class="fw-bold"> /sc 60KG</span>
-                </div>
-            </div>
-            <span class="titulo_fechamento fw-bold">REFERÊNCIA DE COMPRA</span>
-            <div class="row border-top border-muted mb-2">
-                <div class="col">
-                    <span class="fw-bold">PC</span> <%=fechamento.pc%>
-                </div>
-            </div>
             <span class="titulo_fechamento fw-bold">LOCAL DE RETIRADA</span>
-            <div class="row border-top border-muted">
+            <div class="row border-top border-dark">
                 <div class="col">
                     <span class="fw-bold">Nome:</span> <%=retirada.nome%>
                 </div>
@@ -130,7 +137,7 @@
                     <span class="fw-bold">Num:</span> <%=retirada.numero%> - <%=retirada.complemento%>
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
                 <div class="col">
                     <span class="fw-bold">Bairro:</span> <%=retirada.bairro%>
                 </div>
@@ -139,7 +146,7 @@
                 </div>
             </div>
             <span class="titulo_fechamento fw-bold">LOCAL DE DESCARGA</span>
-            <div class="row border-top border-muted">
+            <div class="row border-top border-dark">
                 <div class="col">
                     <span class="fw-bold">Nome:</span> <%=descarga.nome%>
                 </div>
@@ -169,7 +176,7 @@
                 </div>
             </div>
             <span class="titulo_fechamento fw-bold">CORRETAGEM</span>
-            <div class="row border-top border-muted">
+            <div class="row border-top border-dark">
                 <div class="col">
                     <span class="fw-bold">Corretor:</span> <%=fechamento.corretor%>
                 </div>
@@ -183,24 +190,24 @@
                 </div>
             </div>
             <span class="titulo_fechamento fw-bold">OBSERVAÇÕES</span>
-            <div class="row border-top border-muted mb-2">
+            <div class="row border-top border-dark mb-1">
                 <div class="col">
-                    <%=fechamento.obs%>
+                    <textarea class="form-control border-0 obs"><%=fechamento.obs%></textarea>
                 </div>
             </div> 
             <div class="row">
-                <div class="col border-top text-center mt-4">
+                <div class="col border-top border-dark text-center mt-4">
                     Comprador
                 </div>
                 <div class="col"></div>
-                <div class="col border-top text-center mt-4">
+                <div class="col border-top border-dark text-center mt-4">
                     Vendedor
                 </div>
             </div>    
             <div class="row mb-2 mt-2">
                     Patrocínio, <%=fechamento.data%>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-1 obs">
                P.S: Enviar NF-e para jacazado@hotmail.com
             </div>    
         </div>  
