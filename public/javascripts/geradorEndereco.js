@@ -7,7 +7,6 @@ window.addEventListener("load", ()=>{
 
 function getCEP(){
     let cep = document.getElementById('cep');
-    //console.log(cep.value);
     let endereco = `https://viacep.com.br/ws/${cep.value}/json/`;
     axios.get(endereco).then(resultado =>{
         console.log(resultado.data);
